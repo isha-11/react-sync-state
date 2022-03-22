@@ -18,7 +18,8 @@
   "lint-staged": {
     "*": [
       "npm run lint -- --",
-      "jest --findRelatedTests"
+      "jest --findRelatedTests",
+      "npm test:types -- --"
     ]
   },
   "dependencies": {
