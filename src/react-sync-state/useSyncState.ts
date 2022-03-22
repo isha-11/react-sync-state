@@ -1,8 +1,10 @@
 import { useCallback, useRef, useState } from 'react';
 
-export const useSyncState = <T>(
+type UseSyncState = <T extends {}>(
   initialValue: T,
-): [() => T, (value: T) => void] => {
+) => [() => T, (newValue: T) => void];
+
+export const useSyncState: UseSyncState = <T>(initialValue: T) => {
   const valueRef = useRef<T>(initialValue); // To store value, is a container which stores value, ref does not get updated when value changes
   const [_, setValue] = useState<T>(initialValue); // To cause re-render
 
